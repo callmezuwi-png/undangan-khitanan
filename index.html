@@ -6,6 +6,32 @@
     <title>Undangan Khitanan</title>
 
     <style>
+.acara {
+    position: relative;
+}
+
+#lokasiBtn {
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    bottom: 12%;
+
+    width: 220px;
+    height: 50px;
+
+    background: #D4AF37;
+    color: #5B1A1A;
+
+    border: none;
+    border-radius: 25px;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
 #bukaUndangan {
     position: absolute;
     left: 50%;
@@ -98,7 +124,13 @@
 
     <img src="images/doa.png">
     <img src="images/profil.png">
+<div class="acara">
     <img src="images/acara.png">
+
+    <button id="lokasiBtn">
+        📍 Lihat Lokasi
+    </button>
+</div>
     <img src="images/galeri.png">
     <img src="images/penutup.png">
     
@@ -106,6 +138,15 @@
 
 <script>
 window.onload = function () {
+    document.getElementById("lokasiBtn")
+.addEventListener("click", function() {
+
+    window.open(
+        "https://www.google.com/maps/place/Rich+%26+Happy+Cell/@-6.158957,106.7421357,21z/data=!4m14!1m7!3m6!1s0x2e69f7f396131d9d:0x6f0957802ae68d20!2sWarung+Bu+Jem!8m2!3d-6.1588618!4d106.7421063!16s%2Fg%2F11sdzf9tbx!3m5!1s0x2e69f7b02fc041ff:0x1e2b975428a99ca8!8m2!3d-6.1589691!4d106.7423662!16s%2Fg%2F11njsl5pfp?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D",
+        "_blank"
+    );
+
+});
 
     const params = new URLSearchParams(window.location.search);
     const nama = params.get('to');
