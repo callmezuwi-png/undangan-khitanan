@@ -85,7 +85,9 @@
 
 #isi-undangan {
     display: none;
+}
 
+.fade-in {
     animation: fadeIn 1.5s ease;
 }
 
@@ -243,17 +245,20 @@ setInterval(updateCountdown, 1000);
     }
 
     document.getElementById("bukaUndangan")
-    .addEventListener("click", function() {
+.addEventListener("click", function() {
 
-        document.getElementById("isi-undangan")
-        .style.display = "block";
+    const isiUndangan =
+        document.getElementById("isi-undangan");
 
-        document.getElementById("isi-undangan")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+    isiUndangan.style.display = "block";
 
+    isiUndangan.classList.add("fade-in");
+
+    isiUndangan.scrollIntoView({
+        behavior: "smooth"
     });
+
+});
 
 };
 </script>
