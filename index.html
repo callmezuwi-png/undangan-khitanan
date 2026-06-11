@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Khitanan</title>
+
+    <style>
+#bukaUndangan {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 22%;
+
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+    color: transparent;
+
+    cursor: pointer;
+
+    width: 300px;
+    height: 70px;
+}
+
+#isi-undangan {
+    display: none;
+}
+.cover {
+    position: relative;
+    width: 100%;
+}
+
+.cover img {
+    width: 100%;
+    display: block;
+}
+
+.nama-tamu {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 31%;
+    text-align: center;
+    width: 80%;
+}
+
+.nama-tamu p {
+    color: #FFF8E1;
+    font-family: serif;
+    font-size: 22px;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.nama-tamu h2 {
+    color: #D4AF37;
+    font-family: serif;
+    font-size: 40px;
+    margin: 8px 0 0 0;
+    font-weight: bold;
+    line-height: 1.1;
+}
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fff;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="cover">
+    <img src="images/cover.png" alt="cover">
+          
+    <div class="nama-tamu">
+    <p>Kepada Yth.</p>
+    <h2 id="tamu">Tamu Undangan</h2>
+</div>
+
+<button id="bukaUndangan">
+    📩 Buka Undangan
+</button>
+
+</div>
+
+<div id="isi-undangan">
+
+    <img src="images/doa.png">
+    <img src="images/profil.png">
+    <img src="images/acara.png">
+    <img src="images/galeri.png">
+    <img src="images/penutup.png">
+    
+</div>
+
+<script>
+window.onload = function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const nama = params.get('to');
+
+    if (nama) {
+        document.getElementById('tamu').textContent =
+            decodeURIComponent(nama.replace(/\+/g, ' '));
+    }
+
+    document.getElementById("bukaUndangan")
+    .addEventListener("click", function() {
+
+        document.getElementById("isi-undangan")
+        .style.display = "block";
+
+        document.getElementById("isi-undangan")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+    });
+
+};
+</script>
+</body>
+</html>
