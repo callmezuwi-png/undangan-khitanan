@@ -6,6 +6,37 @@
     <title>Undangan Khitanan</title>
 
     <style>
+.countdown-box {
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    bottom: 33%;
+
+    text-align: center;
+
+    background: rgba(255, 248, 225, 0.9);
+
+    padding: 15px 25px;
+
+    border-radius: 20px;
+
+    color: #5B1A1A;
+
+    width: 70%;
+}
+
+.countdown-box p {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#countdown {
+    font-size: 20px;
+    font-weight: bold;
+}
 .acara {
     position: relative;
 }
@@ -54,6 +85,20 @@
 
 #isi-undangan {
     display: none;
+
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
 }
 .cover {
     position: relative;
@@ -130,6 +175,11 @@
     <button id="lokasiBtn">
         📍 Lihat Lokasi
     </button>
+
+    <div class="countdown-box">
+        <p>Menuju Hari Bahagia</p>
+        <div id="countdown"></div>
+    </div>
 </div>
     <img src="images/galeri.png">
     <img src="images/penutup.png">
@@ -138,6 +188,39 @@
 
 <script>
 window.onload = function () {
+const targetDate = new Date("June 21, 2026 10:00:00").getTime();
+
+setInterval(function () {
+
+    const now = new Date().getTime();
+
+    const distance = targetDate - now;
+
+    const hari = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const jam = Math.floor(
+        (distance % (1000 * 60 * 60 * 24))
+        / (1000 * 60 * 60)
+    );
+
+    const menit = Math.floor(
+        (distance % (1000 * 60 * 60))
+        / (1000 * 60)
+    );
+
+    const detik = Math.floor(
+        (distance % (1000 * 60))
+        / 1000
+    );
+
+    document.getElementById("countdown")
+    .innerHTML =
+        hari + " Hari "
+        + jam + " Jam "
+        + menit + " Menit "
+        + detik + " Detik";
+
+}, 1000);
     document.getElementById("lokasiBtn")
 .addEventListener("click", function() {
 
