@@ -304,7 +304,7 @@ setInterval(updateCountdown, 1000);
             decodeURIComponent(nama.replace(/\+/g, ' '));
     }
 
-    document.getElementById("bukaUndangan")
+document.getElementById("bukaUndangan")
 .addEventListener("click", function() {
 
     const isiUndangan =
@@ -314,39 +314,20 @@ setInterval(updateCountdown, 1000);
 
     isiUndangan.classList.add("fade-in");
 
+    document.querySelectorAll(".animate")
+    .forEach(function(slide, index) {
+
+        setTimeout(function() {
+
+            slide.classList.add("show");
+
+        }, index * 500);
+
+    });
+
 });
 
 };
-
-<script>
-
-const observer = new IntersectionObserver(
-    function(entries) {
-
-        entries.forEach(function(entry) {
-
-            if (entry.isIntersecting) {
-
-                entry.target.classList.add("show");
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold: 0.3
-    }
-);
-
-document
-.querySelectorAll(".animate")
-.forEach(function(el) {
-
-    observer.observe(el);
-
-});
 
 </script>
 
