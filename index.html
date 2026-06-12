@@ -7,6 +7,23 @@
 
 <style>
 
+#musicBtn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #D4AF37;
+    cursor: pointer;
+
+    z-index: 9999;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -70,7 +87,7 @@ img {
     left: 50%;
     transform: translateX(-50%);
 
-    bottom: 30%;
+    bottom: 38%;
 
     text-align: center;
 
@@ -105,7 +122,7 @@ img {
     left: 50%;
     transform: translateX(-50%);
 
-    bottom: 16%;
+    bottom: 18%;
 
     width: 220px;
     height: 50px;
@@ -159,7 +176,7 @@ img {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 26%;
+    bottom: 30%;
     text-align: center;
     width: 70%;
 }
@@ -207,6 +224,7 @@ img {
 
 <div class="container">
 
+
     <div class="cover">
         <img src="images/cover.png" alt="cover">
           
@@ -218,6 +236,8 @@ img {
 <button id="bukaUndangan">
     📩 Buka Undangan
 </button>
+
+<button id="musicBtn">🔊</button>
 
 </div>
 
@@ -256,6 +276,25 @@ img {
 
 <script>
 window.onload = function () {
+
+const musik = document.getElementById("musik");
+const musicBtn = document.getElementById("musicBtn");
+
+musicBtn.addEventListener("click", function() {
+
+    if (musik.paused) {
+
+        musik.play();
+        musicBtn.textContent = "🔊";
+
+    } else {
+
+        musik.pause();
+        musicBtn.textContent = "🔇";
+
+    }
+
+});
 
 document.getElementById("copyRek")
 .addEventListener("click", function() {
@@ -322,6 +361,10 @@ setInterval(updateCountdown, 1000);
 document.getElementById("bukaUndangan")
 .addEventListener("click", function() {
 
+    document.getElementById("musik").play();
+
+    musicBtn.textContent = "🔊";
+
     this.disabled = true;
 
     const isiUndangan =
@@ -356,6 +399,10 @@ slides.forEach(function(slide, index) {
 </script>
 
 </div>
+
+<audio id="musik" loop>
+    <source src="backsound.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
