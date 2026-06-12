@@ -27,11 +27,13 @@ img {
 
 .animate {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
+    transition: all 1s ease;
+}
 
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
+.animate.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .animate.show {
@@ -49,9 +51,9 @@ img {
     left: 58%;
     transform: translateX(-50%);
 
-    bottom: 57%;
+    bottom: 55%;
 
-    width: 45%;
+    width: 35%;
     height: 8%;
 
     background: transparent;
@@ -68,7 +70,7 @@ img {
     left: 50%;
     transform: translateX(-50%);
 
-    bottom: 33%;
+    bottom: 30%;
 
     text-align: center;
 
@@ -103,7 +105,7 @@ img {
     left: 50%;
     transform: translateX(-50%);
 
-    bottom: 20%;
+    bottom: 16%;
 
     width: 220px;
     height: 50px;
@@ -123,7 +125,7 @@ img {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 22%;
+    bottom: 21%;
 
     padding: 12px 25px;
 
@@ -135,27 +137,12 @@ img {
 
     cursor: pointer;
 
-    width: 300px;
-    height: 70px;
+    width: 40%;
+    height: 5%;
 }
 
 #isi-undangan {
     display: none;
-}
-
-.fade-in {
-    animation: fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
 }
 
 .cover {
@@ -174,7 +161,7 @@ img {
     transform: translateX(-50%);
     bottom: 26%;
     text-align: center;
-    width: 80%;
+    width: 70%;
 }
 
 .nama-tamu p {
@@ -193,17 +180,6 @@ img {
     font-weight: bold;
     line-height: 1.1;
 }
-        body {
-            margin: 0;
-            padding: 0;
-            background: #5B1A1A;
-        }
-
-        img {
-            width: 100%;
-            display: block;
-        }
-
 
         @media (max-width: 400px) {
 
@@ -217,7 +193,7 @@ img {
     }
 
     #copyRek {
-        width: 50%;
+        width: 35%;
         bottom: 56%;
     }
 
@@ -346,29 +322,34 @@ setInterval(updateCountdown, 1000);
 document.getElementById("bukaUndangan")
 .addEventListener("click", function() {
 
+    this.disabled = true;
+
     const isiUndangan =
         document.getElementById("isi-undangan");
 
-    isiUndangan.style.display = "block";
+   isiUndangan.style.display = "block";
 
-    isiUndangan.classList.add("fade-in");
+isiUndangan.scrollIntoView({
+    behavior: "smooth"
+});
 
-    document.querySelectorAll(".animate")
-    .forEach(function(slide, index) {
+const slides = document.querySelectorAll(".animate");
 
-        setTimeout(function() {
+slides.forEach(function(slide, index) {
 
-            slide.classList.add("show");
+    setTimeout(function() {
 
-        }, index * 500);
+        slide.classList.add("show");
 
-    });
+    }, 800 + (index * 700));
+
+});
 
     isiUndangan.scrollIntoView({
         behavior: "smooth"
     });
 
-});
+}, { once: true });
 
 };
 
