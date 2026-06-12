@@ -5,15 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Khitanan</title>
 
-    <style>
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #5B1A1A; /* warna samping */
+}
+
+.container {
+    max-width: 450px;
+    margin: 0 auto;
+    background: #5B1A1A;
+    min-height: 100vh;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
 
 .animate {
     opacity: 0;
     transform: translateY(40px);
 
     transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+        opacity 1s ease,
+        transform 1s ease;
 }
 
 .animate.show {
@@ -50,7 +68,7 @@
     left: 50%;
     transform: translateX(-50%);
 
-    bottom: 45%;
+    bottom: 40%;
 
     text-align: center;
 
@@ -130,7 +148,6 @@
 }
 
 @keyframes fadeIn {
-
     from {
         opacity: 0;
     }
@@ -140,6 +157,7 @@
     }
 
 }
+
 .cover {
     position: relative;
     width: 100%;
@@ -178,7 +196,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: #fff;
+            background: #5B1A1A;
         }
 
         img {
@@ -192,12 +210,14 @@
 
 <body>
 
-<div class="cover">
-    <img src="images/cover.png" alt="cover">
+<div class="container">
+
+    <div class="cover">
+        <img src="images/cover.png" alt="cover">
           
-    <div class="nama-tamu">
-    <p>Kepada Yth.</p>
-    <h2 id="tamu">Tamu Undangan</h2>
+        <div class="nama-tamu">
+        <p>Kepada Yth.</p>
+        <h2 id="tamu">Tamu Undangan</h2>
 </div>
 
 <button id="bukaUndangan">
@@ -325,11 +345,17 @@ document.getElementById("bukaUndangan")
 
     });
 
+    isiUndangan.scrollIntoView({
+        behavior: "smooth"
+    });
+
 });
 
 };
 
 </script>
+
+</div>
 
 </body>
 </html>
