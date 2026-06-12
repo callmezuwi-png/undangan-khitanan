@@ -7,6 +7,20 @@
 
     <style>
 
+.animate {
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .hadiah {
     position: relative;
 }
@@ -174,9 +188,6 @@
 
     </style>
 
-    <link rel="stylesheet"
-    href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-
 </head>
 
 <body>
@@ -197,14 +208,11 @@
 
 <div id="isi-undangan">
 
-    <img src="images/doa.png"
-    data-aos="fade-up">
+    <img src="images/doa.png" class="animate">
 
-    <img src="images/profil.png"
-    data-aos="fade-up">
-
-<div class="acara"
-data-aos="fade-up">
+    <img src="images/profil.png" class="animate">
+    
+<div class="acara animate">
 
     <img src="images/acara.png">
 
@@ -217,24 +225,23 @@ data-aos="fade-up">
         <div id="countdown"></div>
     </div>
 </div>
-    <img src="images/galeri.png"
-    data-aos="fade-up">
+    <img src="images/galeri.png" class="animate">
 
-<div class="hadiah"
-data-aos="fade-up">
+<div class="hadiah animate">
 
     <img src="images/hadiah.png">
 
     <button id="copyRek"></button>
+
 </div>
 
-    <img src="images/penutup.png"
-    data-aos="fade-up">
+    <img src="images/penutup.png" class="animate">
     
 </div>
 
 <script>
 window.onload = function () {
+
 document.getElementById("copyRek")
 .addEventListener("click", function() {
 
@@ -307,22 +314,40 @@ setInterval(updateCountdown, 1000);
 
     isiUndangan.classList.add("fade-in");
 
-    isiUndangan.scrollIntoView({
-        behavior: "smooth"
-    });
-
 });
 
 };
-</script>
-
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
 <script>
-AOS.init({
-    duration: 1000,
-    once: true
+
+const observer = new IntersectionObserver(
+    function(entries) {
+
+        entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("show");
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold: 0.3
+    }
+);
+
+document
+.querySelectorAll(".animate")
+.forEach(function(el) {
+
+    observer.observe(el);
+
 });
+
 </script>
 
 </body>
